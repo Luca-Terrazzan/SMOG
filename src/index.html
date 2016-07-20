@@ -6,7 +6,8 @@
 
 <!-- IMPORTS -->
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/4.1.2/papaparse.min.js"></script>
-<script src="https://code.jquery.com/jquery-3.1.0.min.js"></script>
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.1.0.min.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/lodash/4.13.1/lodash.min.js"></script>
 
 <body>
 	<h1>Salesforce Metadata Object Generator</h1>
@@ -14,9 +15,10 @@
 </body>
 
 <script type="text/javascript">
+	var metadata = '';
 	function fileHandler (evt) {
 		var file = evt.target.files[0];
-		console.log(file);
+		// console.log(file);
 		Papa.parse(file, {
 			delimiter: "",	// auto-detect
 			newline: "",	// auto-detect
@@ -28,7 +30,9 @@
 			comments: false,
 			step: undefined,
 			complete: function(results){
-				console.log(results);
+				// console.log(results);
+				_.forEach(results.data, fieldGenerator);
+				console.log(metadata);
 			},
 			error: function(results){
 				console.log(results);
@@ -40,6 +44,15 @@
 			beforeFirstChunk: undefined,
 			withCredentials: undefined
 		});
+	}
+
+	function fieldGenerator (arguments) {
+		console.log(arguments);
+		metadata = metadata + 
+		'<fields>\n' +
+		'\t<name>' + arguments[0] + '</name>\n' + 
+		'\t<type>' + arguments[1] + '</type>\n' +
+		'</fields>\n';
 	}
 	$("#fileGetter").change(fileHandler);
 </script>
