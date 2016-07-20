@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>SMOG</title>
+</head>
+
+<!-- IMPORTS -->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/4.1.2/papaparse.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.1.0.min.js"></script>
+
+<body>
+	<h1>Salesforce Metadata Object Generator</h1>
+	<input type="file" id="fileGetter" />
+</body>
+
+<script type="text/javascript">
+	function fileHandler (evt) {
+		var file = evt.target.files[0];
+		console.log(file);
+		Papa.parse(file, {
+			delimiter: "",	// auto-detect
+			newline: "",	// auto-detect
+			header: false,
+			dynamicTyping: false,
+			preview: 0,
+			encoding: "",
+			worker: false,
+			comments: false,
+			step: undefined,
+			complete: function(results){
+				console.log(results);
+			},
+			error: function(results){
+				console.log(results);
+			},
+			download: false,
+			skipEmptyLines: false,
+			chunk: undefined,
+			fastMode: undefined,
+			beforeFirstChunk: undefined,
+			withCredentials: undefined
+		});
+	}
+	$("#fileGetter").change(fileHandler);
+</script>
+</html>
