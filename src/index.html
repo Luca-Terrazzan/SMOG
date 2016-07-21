@@ -50,8 +50,15 @@
 		console.log(arguments);
 		metadata = metadata + 
 		'<fields>\n' +
-		'\t<name>' + arguments[0] + '</name>\n' + 
+		'\t<fullName>' + arguments[0] + '__c</fullName>\n' + 
+		'\t<externalId>false</externalId>\n' +
+		'\t<label>' + arguments[0] + '</label>\n' + 
+		'\t<length>false</length>\n' +
+		'\t<required>false</required>\n' +
+		'\t<trackHistory>false</trackHistory>\n' +
+		'\t<trackTrending>false</trackTrending>\n' +
 		'\t<type>' + arguments[1] + '</type>\n' +
+		'\t<unique>false</unique>\n' +
 		'</fields>\n';
 	}
 	$("#fileGetter").change(fileHandler);
