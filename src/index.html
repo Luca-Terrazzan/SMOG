@@ -5,6 +5,7 @@
 </head>
 
 <!-- IMPORTS -->
+<script type="text/javascript" src="sfdcFieldGenerator.js"></script>
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/4.1.2/papaparse.min.js"></script>
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.1.0.min.js"></script>
 <script type="text/javascript" src="https://cdn.jsdelivr.net/lodash/4.13.1/lodash.min.js"></script>
@@ -30,9 +31,10 @@
 			comments: false,
 			step: undefined,
 			complete: function(results){
-				// console.log(results);
 				_.forEach(results.data, fieldGenerator);
-				console.log(metadata);
+				// console.log(metadata);
+				var field = new sfdcFieldGenerator.sfdcField().addTag(['aaaa', 'bbbb']);
+				console.log(field.compileField());
 			},
 			error: function(results){
 				console.log(results);
