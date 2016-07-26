@@ -33,7 +33,7 @@
 			complete: function(results){
 				_.forEach(results.data, fieldGenerator);
 				// console.log(metadata);
-				var field = new sfdcFieldGenerator.sfdcField().addTag(['aaaa', 'bbbb']);
+				var field = new sfdcField().addTag(['aaaa', 'bbbb']);
 				console.log(field.compileField());
 			},
 			error: function(results){
